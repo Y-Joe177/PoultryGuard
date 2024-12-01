@@ -28,22 +28,20 @@ class _SensorDetailsScreenState extends State<SensorDetailsScreen> {
     }
   }
 
-  Future<void> _fetchRecentReadings() async {
+  void _fetchRecentReadings() {
     final DatabaseReference ref =
         database.ref('UsersData/NQnHFGEqAdcIfgfwye0XcWJXjBK2/readings');
 
-    try {
-      final DataSnapshot snapshot = await ref.limitToLast(7).get();
+    ref.limitToLast(7).onValue.listen((DatabaseEvent event) {
+      final DataSnapshot snapshot = event.snapshot;
       if (snapshot.exists) {
-        print("retrieved");
+        print("Data updated");
         final Map<String, dynamic> readingsMap =
             Map<String, dynamic>.from(snapshot.value as Map);
         final List<double> readingsList = readingsMap.values
             .map((value) =>
                 double.tryParse(value[widget.sensor['firebase']]) ?? 0.0)
             .toList();
-        print(readingsList);
-
         setState(() {
           recentReadings = readingsList;
           isLoading = false;
@@ -53,23 +51,21 @@ class _SensorDetailsScreenState extends State<SensorDetailsScreen> {
           isLoading = false;
         });
       }
-    } catch (e) {
+    }).onError((error) {
       setState(() {
         isLoading = false;
       });
-      print("Error fetching data: $e");
-    }
+      print("Error listening to data: $error");
+    });
   }
 
-  Future<void> _fetchExceedingReadings() async {
-    final DatabaseReference ref =
-        database.ref(widget.sensor['firebase']);
+  void _fetchExceedingReadings() {
+    final DatabaseReference ref = database.ref(widget.sensor['firebase']);
 
-    try {
-      final DataSnapshot snapshot = await ref.get();
+    ref.onValue.listen((DatabaseEvent event) {
+      final DataSnapshot snapshot = event.snapshot;
       if (snapshot.exists) {
-        print("retrieved");
-
+        print("Data updated");
         setState(() {
           exceedReading = double.tryParse(snapshot.value.toString()) ?? 0.0;
           isLoading = false;
@@ -79,12 +75,12 @@ class _SensorDetailsScreenState extends State<SensorDetailsScreen> {
           isLoading = false;
         });
       }
-    } catch (e) {
+    }).onError((error) {
       setState(() {
         isLoading = false;
       });
-      print("Error fetching data: $e");
-    }
+      print("Error listening to data: $error");
+    });
   }
 
   @override
