@@ -11,11 +11,11 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final List<Map<String, dynamic>> sensors = [
-    {'title': 'Light Intensity', 'color': Colors.yellow, 'icon': Icons.wb_sunny, 'details': 'Details about Light Intensity'},
-    {'title': 'VOC', 'color': Colors.green, 'icon': Icons.science, 'details': 'Details about VOC'},
-    {'title': 'Temperature', 'color': Colors.orange, 'icon': Icons.thermostat, 'details': 'Details about Temperature'},
-    {'title': 'Temperature Exceeds X', 'color': Colors.red, 'icon': Icons.warning, 'details': 'Details about Temp > X'},
-    {'title': 'Temperature Exceeds Y', 'color': Colors.blue, 'icon': Icons.ac_unit, 'details': 'Details about Temp < Y'},
+    {'title': 'Light Intensity', 'firebase': 'Light', 'color': Colors.yellow, 'icon': Icons.wb_sunny, 'details': 'Details about Light Intensity'},
+    {'title': 'VOC', 'firebase': 'VOCs', 'color': Colors.green, 'icon': Icons.science, 'details': 'Details about VOC'},
+    {'title': 'Temperature', 'firebase': 'Temperature', 'color': Colors.orange, 'icon': Icons.thermostat, 'details': 'Details about Temperature'},
+    {'title': 'Temperature Exceeds X', 'firebase': 'ExceedX', 'color': Colors.red, 'icon': Icons.warning, 'details': 'Details about Temp > X'},
+    {'title': 'Temperature Exceeds Y', 'firebase': 'ExceedY', 'color': Colors.blue, 'icon': Icons.ac_unit, 'details': 'Details about Temp < Y'},
   ];
 
   @override
@@ -25,15 +25,16 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text("Monitor Sensors"),
       ),
       body: GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: 8,
           crossAxisSpacing: 16,
           childAspectRatio: 3/2
         ),
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         itemCount: sensors.length,
         itemBuilder: (ctx, i) => OrangeCard(
+          firebase: sensors[i]['firebase'],
           title: sensors[i]['title'],
           icon: sensors[i]['icon'],
           baseColor: sensors[i]['color'],

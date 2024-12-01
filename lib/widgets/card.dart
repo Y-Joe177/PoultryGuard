@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 class OrangeCard extends StatelessWidget {
   final String title;
+  final String firebase;
   final IconData icon;
   final Color baseColor;
   final Color textColor;
   final void Function()? onClick;
-  const OrangeCard({super.key, required this.title, required this.icon, this.baseColor=Colors.orange, this.textColor=Colors.white, this.onClick, });
+  const OrangeCard({super.key, required this.firebase, required this.title, required this.icon, this.baseColor=Colors.orange, this.textColor=Colors.white, this.onClick, });
 
   @override
   Widget build(BuildContext context) {
