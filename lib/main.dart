@@ -13,14 +13,14 @@ Future<void> _initializeFirebase() async {
   if (kIsWeb) { // Fixed capitalization of `kIsWeb`
     await Firebase.initializeApp(
       options: const FirebaseOptions( // Correct class name and usage
-        apiKey: "AIzaSyC4VCsfJC8SJdcHFj6-v3ObClPsd3ZMG7U",
-        authDomain: "cap2-81e64.firebaseapp.com",
-        databaseURL: "https://cap2-81e64-default-rtdb.europe-west1.firebasedatabase.app",
-        projectId: "cap2-81e64",
-        storageBucket: "cap2-81e64.appspot.com", // Fixed incorrect storage bucket URL
-        messagingSenderId: "31930812812",
-        appId: "1:31930812812:web:0c0a343b9f9a7716bf2ea9",
-        measurementId: "G-D5EJV0Z5JM",
+          apiKey: "AIzaSyDeLeDfku49bCIeLIW1lap5h4sTFgYwG6I",
+          authDomain: "cap4-3aa91.firebaseapp.com",
+          databaseURL: "https://cap4-3aa91-default-rtdb.europe-west1.firebasedatabase.app",
+          projectId: "cap4-3aa91",
+          storageBucket: "cap4-3aa91.firebasestorage.app",
+          messagingSenderId: "593122259416",
+          appId: "1:593122259416:web:e8876516842053b0c042ad",
+          measurementId: "G-J96ZV6P7R4"
       ),
     );
   } else {
