@@ -1,14 +1,14 @@
 {
   "project_info": {
-    "project_number": "113151719878",
-    "firebase_url": "https://capstone-524b6-default-rtdb.europe-west1.firebasedatabase.app",
-    "project_id": "capstone-524b6",
-    "storage_bucket": "capstone-524b6.firebasestorage.app"
+    "project_number": "593122259416",
+    "firebase_url": "https://cap4-3aa91-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "cap4-3aa91",
+    "storage_bucket": "cap4-3aa91.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:113151719878:android:2233db6f1a5514df6b9ac7",
+        "mobilesdk_app_id": "1:593122259416:android:800a0c1a73b59fffc042ad",
         "android_client_info": {
           "package_name": "com.example.poultry_guard"
         }
@@ -16,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAX017umbeYYoPFq35EG_x_R5lzstl4Rjw"
+          "current_key": "AIzaSyBX4UxgWGO4uhN2LWsTnYI-mHWD2KMaFIE"
         }
       ],
       "services": {
