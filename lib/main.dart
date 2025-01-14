@@ -40,10 +40,91 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
         useMaterial3: true,
       ),
-      initialRoute: '/', // Added initial route for clarity
-      routes: {
-        '/': (ctx) => const HomeScreen(),
-      },
+      home: const HomeScreen(),
+    );
+  }
+}
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Monitor Sensors'),
+      ),
+      body: Column(
+        children: [
+          // Add other widgets here (e.g., buttons, cards)
+          const Spacer(), // Pushes the table to the bottom of the screen
+          Table(
+            border: TableBorder.all(),
+            columnWidths: const {
+              0: FlexColumnWidth(2), // Adjusts column width proportions
+              1: FlexColumnWidth(1),
+            },
+            children: const [
+              TableRow(children: [
+                Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    'Parameter',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    'Value',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ]),
+              TableRow(children: [
+                Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text('Temperature'),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text('18 °C'),
+                ),
+              ]),
+              TableRow(children: [
+                Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text('Current VOCs'),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text('0 ppm'),
+                ),
+              ]),
+              TableRow(children: [
+                Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text('Current Light Intensity'),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text('4095'),
+                ),
+              ]),
+              TableRow(children: [
+                Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text('Predicted Temperature'),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text('4095 °C'),
+                ),
+              ]),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
